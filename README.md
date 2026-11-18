@@ -2,7 +2,7 @@
   <img src="docs/assets/hero.png" alt="Day 09 Lab: pipeline kiểm nhãn tự động" width="100%">
 </p>
 
-# Day 09 Lab — Pipeline kiểm nhãn tự động
+# Day 09 Lab — Đinh Tuấn Thành: 2A202603231 - Đinh Tuấn Thành
 
 <p align="center">
   <img alt="cá nhân" src="https://img.shields.io/badge/lab-cá%20nhân-0b1f3a">
@@ -26,6 +26,22 @@ Bạn sẽ **tự viết 4 module** (`label_format`, `second_opinion`, `autofix`
 ![Pipeline và cửa chặn](docs/assets/pipeline.png)
 
 ![Máy bắt gì, người bắt gì](docs/assets/machine_human.png)
+
+## Kết quả triển khai
+
+- Đã triển khai bốn module; 79 test pass. Chọn `phash_dist=4`, `second_opinion.conf=0.6` theo hai sweep calibration.
+- Pipeline: **Hold**, giữ 205/224 ảnh; 0 lỗi bắt buộc, 38/205 ảnh còn cảnh báo chưa duyệt sau ngân sách 80 ảnh. Export là **bản nháp**; chưa train Colab.
+- Báo cáo và các giới hạn: [submission/REPORT.md](submission/REPORT.md).
+
+Chạy trên PowerShell với Python 3.13 (tạo `.venv` và cài `requirements.txt` trước):
+
+```powershell
+$env:PYTHONUTF8 = "1"
+.\.venv\Scripts\python.exe -m pipeline.run
+.\.venv\Scripts\python.exe scripts/check_submission_windows.py --no-train
+```
+
+Lệnh kiểm Windows chuẩn hoá phép so đường dẫn trong bộ nhớ để tránh checker gốc báo nhầm file được bảo vệ; mọi kiểm SHA1 và test được giữ nguyên. Chi tiết ở docstring của script. Pipeline trả mã 10 khi Hold, 20 khi Rework; đây là quyết định QC.
 
 ## Bộ dữ liệu
 
