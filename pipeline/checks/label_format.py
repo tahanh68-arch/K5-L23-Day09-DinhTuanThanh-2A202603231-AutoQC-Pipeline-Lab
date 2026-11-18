@@ -25,5 +25,36 @@ from ..common import ERROR, WARN, Issue, iou_xywh, parse_yolo_line  # noqa: F401
 
 
 def run(ds, cfg):
-    # TODO: duyệt từng file nhãn, từng dòng
-    raise NotImplementedError("check label_format chưa làm")
+    c = cfg["label_format"]
+    issues = []
+    for path in ds.label_files():
+        stem, previous = path.stem, []
+        size = ds.image_size(stem)
+        for no, text in ds.read_label_lines(stem) or []:
+            def add(code, message, severity=ERROR, **extra):
+                issues.append(Issue("label_format", severity, code, stem, message, no, extra))
+
+            try:
+                cls, x, y, w, h = parse_yolo_line(text)
+            except (ValueError, OverflowError):
+                add("BAD_FORMAT", "dòng nhãn phải gồm 5 số hữu hạn, ID nguyên")
+                continue
+            if not 0 <= cls < len(ds.classes):
+                add("BAD_CLASS_ID", f"ID lớp {cls} ngoài danh sách dự án")
+                continue
+            if w <= 0 or h <= 0:
+                add("BOX_ZERO", "chiều rộng hoặc chiều cao không dương")
+                continue
+            box = (x, y, w, h)
+            overflow = max(0, w / 2 - x, h / 2 - y, x + w / 2 - 1, y + h / 2 - 1)
+            if overflow > c["overflow_tol"]:
+                add("BOX_OUT_OF_IMAGE", f"box tràn ảnh {overflow:.6f}", overflow=overflow)
+            if any(cls == old_cls and iou_xywh(box, old_box) > c["dup_box_iou"]
+                   for old_cls, old_box in previous):
+                add("DUP_BOX", "box trùng với dòng cùng lớp phía trước")
+            previous.append((cls, box))
+            if size and min(w * size[0], h * size[1]) < c["min_box_px"]:
+                add("BOX_TINY", "cạnh ngắn của box dưới ngưỡng pixel", WARN)
+            if w * h > c["max_box_frac"]:
+                add("BOX_HUGE", "box phủ quá nhiều diện tích ảnh", WARN)
+    return issues
