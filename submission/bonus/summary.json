@@ -1,0 +1,10 @@
+{
+  "check": "aspect_ratio",
+  "dataset": "data/raw",
+  "max_ratio": 10.0,
+  "n_images": 224,
+  "n_issues": 0,
+  "n_warn_images": 0,
+  "warn_ratio": 0.0,
+  "note": "Chỉ cảnh báo cho người xem; không tự sửa nhãn, không thay đổi quyết định QC hoặc dữ liệu train."
+}

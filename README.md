@@ -29,7 +29,7 @@ Bạn sẽ **tự viết 4 module** (`label_format`, `second_opinion`, `autofix`
 
 ## Kết quả triển khai
 
-- Đã triển khai bốn module; 79 test pass. Chọn `phash_dist=4`, `second_opinion.conf=0.6` theo hai sweep calibration.
+- Đã triển khai bốn module; 79 test gốc và 18 test bonus. Chọn `phash_dist=4`, `second_opinion.conf=0.6` theo hai sweep calibration.
 - Pipeline: **Hold**, giữ 205/224 ảnh; 0 lỗi bắt buộc, 38/205 ảnh còn cảnh báo chưa duyệt sau ngân sách 80 ảnh. Export là **bản nháp**.
 - Đã train Colab: `yolo26n.pt`, 20 epoch, batch 16, 640 px, seed 0 và 1 cho raw/clean. mAP50: raw **0,7258 ± 0,0002**, clean **0,7004 ± 0,0305**; chưa có bằng chứng clean tốt hơn. Kết quả nguyên gốc trong `submission/results/`, phân tích ở `submission/REPORT.md` mục 5.
 - Báo cáo và các giới hạn: [submission/REPORT.md](submission/REPORT.md).
@@ -43,6 +43,17 @@ $env:PYTHONUTF8 = "1"
 ```
 
 Khi đã có kết quả train, chạy `.\.venv\Scripts\python.exe scripts/check_submission_windows.py` (bỏ `--no-train`). Wrapper chuẩn hoá đường dẫn file bảo vệ và so hash manifest theo byte nguyên gốc giống script train; không thay đổi file đề, test hoặc số liệu. Chi tiết ở docstring của script. Pipeline trả mã 10 khi Hold, 20 khi Rework; đây là quyết định QC.
+
+### Bonus +3: box có tỉ lệ cạnh bất thường
+
+Check mới `pipeline/checks/aspect_ratio.py` tính `max(w*W, h*H) / min(w*W, h*H)` theo pixel. Tỉ lệ lớn hơn ngưỡng `10` trong `configs/bonus.yaml` sinh cảnh báo `BOX_EXTREME_ASPECT` cho người xem. Ngưỡng này là heuristic, chưa calibration. Check chỉ đọc; báo cáo bổ sung tách khỏi pipeline lõi và dữ liệu đã train.
+
+```powershell
+.\.venv\Scripts\python.exe -m pytest bonus_tests -q
+.\.venv\Scripts\python.exe -m pipeline.bonus
+```
+
+Kết quả: quét 224 ảnh raw, 0 cảnh báo ở ngưỡng 10:1. Bộ 18 test bao gồm các ca có cảnh báo, biên ngưỡng, kích thước pixel và tính chỉ đọc/tái lập. Chi tiết: [docs/BONUS.md](docs/BONUS.md); báo cáo sinh tự động ở `submission/bonus/`.
 
 ## Bộ dữ liệu
 

@@ -1,0 +1,4 @@
+# Ngưỡng heuristic để gợi ý người xem, chưa được calibration bằng đáp án.
+# Tách khỏi pipeline.yaml vì cấu hình lõi của đề được bảo vệ.
+aspect_ratio:
+  max_ratio: 10.0  # cảnh báo khi cạnh dài / cạnh ngắn (pixel) > 10
