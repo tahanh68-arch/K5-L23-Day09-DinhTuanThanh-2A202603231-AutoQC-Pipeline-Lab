@@ -50,11 +50,22 @@ Calib chỉ 39 ảnh nên có thể gây hiểu nhầm: pHash=16 đạt recall N
 
 Điểm mù đo trên calib: (1) pHash=4 bỏ sót `calib_037`, `calib_038` (2/6 ca NEAR); (2) second opinion bỏ sót sai lớp ở `calib_009` (1/6) và box lỏng ở `calib_002`, `calib_006`, `calib_012`, `calib_024` (4/5). Model kiểm cũng có thể sai; không tự sửa nhãn ngữ nghĩa theo model.
 
-Đã tạo 10 ảnh vẽ nhãn trong `work/viz/` để học viên kiểm bằng mắt. Ví dụ máy phát hiện để đối chiếu: `img_0020.txt:3` sai ID, `img_0030.txt:9` tràn ảnh, `img_0050.txt:1` box rỗng. Chưa ghi nhận kết quả học viên tự kiểm bằng mắt.
+Đã đối chiếu trực quan ảnh vẽ nhãn trong `work/viz/`; học viên xác nhận ba nhận xét sau trùng với kết quả tự kiểm của mình: (1) `img_0001`: người mặc quân phục đứng giữa bên phải không có box; nhãn chỉ có hai box chồng gần trùng trên người bên trái và một box cho người sát mép phải, phù hợp `POSSIBLE_MISSING` và `DUP_BOX`. (2) `img_0020`: xe buýt màu cam bị ghi `truck` (dòng 1, ID 2); cần người đổi thành `bus` (ID 3), phù hợp `POSSIBLE_WRONG_CLASS`. Dòng 3 còn có ID 93 không hợp lệ. (3) `img_0050`: box người lướt sóng co thành đường thẳng đứng; dòng 1 có w=0, phù hợp `BOX_ZERO`. Máy bỏ dòng hỏng, người cần gán lại box thay vì xem việc bỏ dòng là sửa xong ngữ nghĩa. Trợ lý AI hỗ trợ đối chiếu 10 ảnh và kiểm tra nhãn, học viên xác nhận ba nhận xét trên.
 
 ## 5. Train: raw vs clean (tùy chọn, chấm riêng)
 
-**Chưa chạy**: hiện hoàn thiện phần lõi trên CPU, chưa có phiên Colab GPU. Khi train: cùng model, siêu tham số, val/test và ít nhất hai seed. So chênh mAP với độ lệch giữa seed; raw có rò rỉ test/val, clean còn nhãn chưa duyệt là hai giả thuyết cần kiểm. Không khẳng định clean tốt hơn khi chưa có số liệu.
+Đã train trên Google Colab bằng `scripts/train_compare.py`: cùng `yolo26n.pt`, 20 epoch, batch 16, ảnh 640 px, seed 0 và 1, chung val 40 ảnh và test 100 ảnh. Kết quả nhập nguyên byte từ `day09_results.zip`; config SHA1 khớp cấu hình hiện tại và manifest SHA1 khớp chính xác bản export đã train.
+
+| Biến thể | Ảnh train đầu vào | Seed | mAP50 (TB ± SD) | mAP50-95 | Precision | Recall |
+|---|---:|---:|---|---|---|---|
+| raw | 224 | 2 | 0,7258 ± 0,0002 | 0,5117 ± 0,0038 | 0,7635 ± 0,0612 | 0,6490 ± 0,0281 |
+| clean | 205 | 2 | 0,7004 ± 0,0305 | 0,4863 ± 0,0128 | 0,7146 ± 0,0733 | 0,6154 ± 0,0174 |
+
+Nguồn: `results/*_seed*.json`, `results/comparison.md`. Số ảnh trên là số file đầu vào mà script ghi nhận; Ultralytics có thể tự bỏ ảnh/nhãn hỏng, chưa có log chi tiết để xác nhận số ảnh thực dùng của raw.
+
+Chênh mAP50 clean − raw = **−0,0254** (−2,54 điểm phần trăm), nhỏ hơn SD của clean (0,0305); theo từng seed là −0,0468 và −0,0040. Trong hai lần thử, clean đều thấp hơn raw; **chưa có bằng chứng clean cải thiện chất lượng model**. Hai seed chưa đủ để khẳng định sự khác biệt ổn định hoặc có ý nghĩa thống kê. AP50 trung bình truck giảm 0,6485→0,5588; car tăng nhẹ 0,7375→0,7485, nên tác động không đồng đều theo lớp.
+
+Hai giả thuyết cần kiểm: (1) raw có 4 ảnh trùng kho test/val, có thể làm điểm raw cao giả; cần thí nghiệm raw bỏ riêng ảnh rò rỉ, giữ seed/siêu tham số, rồi so lại, không dùng nhãn test để sửa dữ liệu. (2) clean giảm số ảnh và còn 38 ảnh cảnh báo chưa duyệt; cần kiểm phân bố lớp, ưu tiên rà nhãn truck, sau đó train thêm seed trên phiên bản dữ liệu mới có truy vết. Chưa kết luận được giả thuyết nào là nguyên nhân chính.
 
 ## 6. Quyết định và ghi chú AI
 
@@ -64,4 +75,4 @@ Giữ **Hold**. Muốn Release cần xử lý cảnh báo qua quy trình duyệt
 - Kiểm: 79 test gốc pass, hai sweep calibration, pipeline và budget=0. Học viên cần đọc và giải thích code AI trước khi nộp.
 - Một lần AI thiếu: lần chạy test đầu dùng thư mục tạm chưa có thư mục cha nên 69 fixture lỗi; tạo `work/`, chỉ định basetemp trong workspace rồi chạy lại. Đây là lỗi thiết lập test, không phải kết quả kiểm nhãn.
 
-Windows: checker gốc so đường dẫn dùng dấu gạch chéo ngược với danh sách bảo vệ dùng `/`, báo nhầm `pipeline/calibrate.py`. `scripts/check_submission_windows.py --no-train` chỉ chuẩn hoá phép so trong bộ nhớ và đặt TEMP/TMP trong workspace; giữ nguyên file đề, test và kiểm SHA1.
+Kiểm bài: `python scripts/check_submission_windows.py` chạy đủ cả train, kết quả **79 test pass, 0 lỗi, 0 cảnh báo**. Checker gốc chạy cùng dữ liệu có **79 test pass, 4 lỗi, 0 cảnh báo**. Wrapper xử lý hai lỗi của checker gốc: đường dẫn Windows và so hash manifest sau chuẩn hoá xuống dòng trong khi script train hash byte nguyên gốc. Chỉ sửa hai phép so trong bộ nhớ; giữ nguyên file đề, test, kiểm SHA1 file bảo vệ và kết quả train. `.gitattributes` giữ byte export qua Git để không đổi hash dữ liệu đã train. Chi tiết và bằng chứng ở `docs/CHECKER_COMPATIBILITY.md`; không sửa số liệu để né lỗi kiểm tra này.

@@ -30,7 +30,8 @@ Bạn sẽ **tự viết 4 module** (`label_format`, `second_opinion`, `autofix`
 ## Kết quả triển khai
 
 - Đã triển khai bốn module; 79 test pass. Chọn `phash_dist=4`, `second_opinion.conf=0.6` theo hai sweep calibration.
-- Pipeline: **Hold**, giữ 205/224 ảnh; 0 lỗi bắt buộc, 38/205 ảnh còn cảnh báo chưa duyệt sau ngân sách 80 ảnh. Export là **bản nháp**; chưa train Colab.
+- Pipeline: **Hold**, giữ 205/224 ảnh; 0 lỗi bắt buộc, 38/205 ảnh còn cảnh báo chưa duyệt sau ngân sách 80 ảnh. Export là **bản nháp**.
+- Đã train Colab: `yolo26n.pt`, 20 epoch, batch 16, 640 px, seed 0 và 1 cho raw/clean. mAP50: raw **0,7258 ± 0,0002**, clean **0,7004 ± 0,0305**; chưa có bằng chứng clean tốt hơn. Kết quả nguyên gốc trong `submission/results/`, phân tích ở `submission/REPORT.md` mục 5.
 - Báo cáo và các giới hạn: [submission/REPORT.md](submission/REPORT.md).
 
 Chạy trên PowerShell với Python 3.13 (tạo `.venv` và cài `requirements.txt` trước):
@@ -41,7 +42,7 @@ $env:PYTHONUTF8 = "1"
 .\.venv\Scripts\python.exe scripts/check_submission_windows.py --no-train
 ```
 
-Lệnh kiểm Windows chuẩn hoá phép so đường dẫn trong bộ nhớ để tránh checker gốc báo nhầm file được bảo vệ; mọi kiểm SHA1 và test được giữ nguyên. Chi tiết ở docstring của script. Pipeline trả mã 10 khi Hold, 20 khi Rework; đây là quyết định QC.
+Khi đã có kết quả train, chạy `.\.venv\Scripts\python.exe scripts/check_submission_windows.py` (bỏ `--no-train`). Wrapper chuẩn hoá đường dẫn file bảo vệ và so hash manifest theo byte nguyên gốc giống script train; không thay đổi file đề, test hoặc số liệu. Chi tiết ở docstring của script. Pipeline trả mã 10 khi Hold, 20 khi Rework; đây là quyết định QC.
 
 ## Bộ dữ liệu
 
