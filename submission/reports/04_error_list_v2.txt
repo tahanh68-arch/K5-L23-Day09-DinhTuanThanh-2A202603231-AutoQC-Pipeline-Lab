@@ -1,0 +1,171 @@
+# Danh sách lỗi — SAU sửa tự động (v2)
+ảnh đã quét: 205
+
+label_format -> 10 dòng
+missing_labels -> 21 dòng
+second_opinion -> 123 dòng
+
+[ERROR] MISSING_LABEL_FILE   img_0031  ảnh không có file nhãn
+[ERROR] MISSING_LABEL_FILE   img_0053  ảnh không có file nhãn
+[ERROR] MISSING_LABEL_FILE   img_0126  ảnh không có file nhãn
+[ERROR] MISSING_LABEL_FILE   img_0135  ảnh không có file nhãn
+[ERROR] MISSING_LABEL_FILE   img_0170  ảnh không có file nhãn
+[ERROR] MISSING_LABEL_FILE   img_0219  ảnh không có file nhãn
+[WARN ] BOX_HUGE             img_0018.txt:1  box phủ quá nhiều diện tích ảnh
+[WARN ] BOX_HUGE             img_0128.txt:1  box phủ quá nhiều diện tích ảnh
+[WARN ] BOX_HUGE             img_0196.txt:1  box phủ quá nhiều diện tích ảnh
+[WARN ] BOX_TINY             img_0026.txt:6  cạnh ngắn của box dưới ngưỡng pixel
+[WARN ] BOX_TINY             img_0030.txt:9  cạnh ngắn của box dưới ngưỡng pixel
+[WARN ] BOX_TINY             img_0051.txt:5  cạnh ngắn của box dưới ngưỡng pixel
+[WARN ] BOX_TINY             img_0069.txt:2  cạnh ngắn của box dưới ngưỡng pixel
+[WARN ] BOX_TINY             img_0161.txt:2  cạnh ngắn của box dưới ngưỡng pixel
+[WARN ] BOX_TINY             img_0161.txt:3  cạnh ngắn của box dưới ngưỡng pixel
+[WARN ] BOX_TINY             img_0161.txt:4  cạnh ngắn của box dưới ngưỡng pixel
+[WARN ] EMPTY_LABEL          img_0004  file nhãn rỗng: ảnh nền hay thiếu nhãn?
+[WARN ] EMPTY_LABEL          img_0013  file nhãn rỗng: ảnh nền hay thiếu nhãn?
+[WARN ] EMPTY_LABEL          img_0050  file nhãn rỗng: ảnh nền hay thiếu nhãn?
+[WARN ] EMPTY_LABEL          img_0057  file nhãn rỗng: ảnh nền hay thiếu nhãn?
+[WARN ] EMPTY_LABEL          img_0065  file nhãn rỗng: ảnh nền hay thiếu nhãn?
+[WARN ] EMPTY_LABEL          img_0097  file nhãn rỗng: ảnh nền hay thiếu nhãn?
+[WARN ] EMPTY_LABEL          img_0103  file nhãn rỗng: ảnh nền hay thiếu nhãn?
+[WARN ] EMPTY_LABEL          img_0104  file nhãn rỗng: ảnh nền hay thiếu nhãn?
+[WARN ] EMPTY_LABEL          img_0129  file nhãn rỗng: ảnh nền hay thiếu nhãn?
+[WARN ] EMPTY_LABEL          img_0147  file nhãn rỗng: ảnh nền hay thiếu nhãn?
+[WARN ] EMPTY_LABEL          img_0157  file nhãn rỗng: ảnh nền hay thiếu nhãn?
+[WARN ] EMPTY_LABEL          img_0178  file nhãn rỗng: ảnh nền hay thiếu nhãn?
+[WARN ] EMPTY_LABEL          img_0184  file nhãn rỗng: ảnh nền hay thiếu nhãn?
+[WARN ] EMPTY_LABEL          img_0192  file nhãn rỗng: ảnh nền hay thiếu nhãn?
+[WARN ] EMPTY_LABEL          img_0194  file nhãn rỗng: ảnh nền hay thiếu nhãn?
+[WARN ] POSSIBLE_FALSE_POS   img_0024.txt:7  box nhãn không khớp dự đoán nào; cần người xem
+[WARN ] POSSIBLE_FALSE_POS   img_0030.txt:9  box nhãn không khớp dự đoán nào; cần người xem
+[WARN ] POSSIBLE_FALSE_POS   img_0035.txt:2  box nhãn không khớp dự đoán nào; cần người xem
+[WARN ] POSSIBLE_FALSE_POS   img_0068.txt:7  box nhãn không khớp dự đoán nào; cần người xem
+[WARN ] POSSIBLE_FALSE_POS   img_0069.txt:2  box nhãn không khớp dự đoán nào; cần người xem
+[WARN ] POSSIBLE_FALSE_POS   img_0070.txt:6  box nhãn không khớp dự đoán nào; cần người xem
+[WARN ] POSSIBLE_FALSE_POS   img_0078.txt:2  box nhãn không khớp dự đoán nào; cần người xem
+[WARN ] POSSIBLE_FALSE_POS   img_0091.txt:7  box nhãn không khớp dự đoán nào; cần người xem
+[WARN ] POSSIBLE_FALSE_POS   img_0092.txt:9  box nhãn không khớp dự đoán nào; cần người xem
+[WARN ] POSSIBLE_FALSE_POS   img_0095.txt:6  box nhãn không khớp dự đoán nào; cần người xem
+[WARN ] POSSIBLE_FALSE_POS   img_0099.txt:14  box nhãn không khớp dự đoán nào; cần người xem
+[WARN ] POSSIBLE_FALSE_POS   img_0100.txt:4  box nhãn không khớp dự đoán nào; cần người xem
+[WARN ] POSSIBLE_FALSE_POS   img_0111.txt:2  box nhãn không khớp dự đoán nào; cần người xem
+[WARN ] POSSIBLE_FALSE_POS   img_0144.txt:1  box nhãn không khớp dự đoán nào; cần người xem
+[WARN ] POSSIBLE_FALSE_POS   img_0149.txt:3  box nhãn không khớp dự đoán nào; cần người xem
+[WARN ] POSSIBLE_FALSE_POS   img_0150.txt:3  box nhãn không khớp dự đoán nào; cần người xem
+[WARN ] POSSIBLE_FALSE_POS   img_0155.txt:2  box nhãn không khớp dự đoán nào; cần người xem
+[WARN ] POSSIBLE_FALSE_POS   img_0155.txt:3  box nhãn không khớp dự đoán nào; cần người xem
+[WARN ] POSSIBLE_FALSE_POS   img_0177.txt:2  box nhãn không khớp dự đoán nào; cần người xem
+[WARN ] POSSIBLE_FALSE_POS   img_0180.txt:5  box nhãn không khớp dự đoán nào; cần người xem
+[WARN ] POSSIBLE_FALSE_POS   img_0189.txt:4  box nhãn không khớp dự đoán nào; cần người xem
+[WARN ] POSSIBLE_FALSE_POS   img_0193.txt:6  box nhãn không khớp dự đoán nào; cần người xem
+[WARN ] POSSIBLE_FALSE_POS   img_0204.txt:1  box nhãn không khớp dự đoán nào; cần người xem
+[WARN ] POSSIBLE_FALSE_POS   img_0206.txt:1  box nhãn không khớp dự đoán nào; cần người xem
+[WARN ] POSSIBLE_LOOSE_BOX   img_0015  model lớp 1, conf=0.894, IoU=0.343; cần người xem
+[WARN ] POSSIBLE_LOOSE_BOX   img_0018  model lớp 1, conf=0.720, IoU=0.447; cần người xem
+[WARN ] POSSIBLE_LOOSE_BOX   img_0036  model lớp 1, conf=0.873, IoU=0.427; cần người xem
+[WARN ] POSSIBLE_LOOSE_BOX   img_0038  model lớp 1, conf=0.921, IoU=0.397; cần người xem
+[WARN ] POSSIBLE_LOOSE_BOX   img_0045  model lớp 1, conf=0.752, IoU=0.335; cần người xem
+[WARN ] POSSIBLE_LOOSE_BOX   img_0046  model lớp 1, conf=0.893, IoU=0.382; cần người xem
+[WARN ] POSSIBLE_LOOSE_BOX   img_0054  model lớp 0, conf=0.740, IoU=0.379; cần người xem
+[WARN ] POSSIBLE_LOOSE_BOX   img_0062  model lớp 1, conf=0.805, IoU=0.471; cần người xem
+[WARN ] POSSIBLE_LOOSE_BOX   img_0062  model lớp 1, conf=0.637, IoU=0.352; cần người xem
+[WARN ] POSSIBLE_LOOSE_BOX   img_0064  model lớp 1, conf=0.915, IoU=0.450; cần người xem
+[WARN ] POSSIBLE_LOOSE_BOX   img_0077  model lớp 1, conf=0.735, IoU=0.402; cần người xem
+[WARN ] POSSIBLE_LOOSE_BOX   img_0082  model lớp 1, conf=0.808, IoU=0.483; cần người xem
+[WARN ] POSSIBLE_LOOSE_BOX   img_0090  model lớp 1, conf=0.715, IoU=0.463; cần người xem
+[WARN ] POSSIBLE_LOOSE_BOX   img_0094  model lớp 1, conf=0.728, IoU=0.394; cần người xem
+[WARN ] POSSIBLE_LOOSE_BOX   img_0096  model lớp 1, conf=0.918, IoU=0.469; cần người xem
+[WARN ] POSSIBLE_LOOSE_BOX   img_0119  model lớp 1, conf=0.706, IoU=0.408; cần người xem
+[WARN ] POSSIBLE_LOOSE_BOX   img_0125  model lớp 1, conf=0.833, IoU=0.421; cần người xem
+[WARN ] POSSIBLE_LOOSE_BOX   img_0127  model lớp 1, conf=0.884, IoU=0.437; cần người xem
+[WARN ] POSSIBLE_LOOSE_BOX   img_0127  model lớp 1, conf=0.705, IoU=0.377; cần người xem
+[WARN ] POSSIBLE_LOOSE_BOX   img_0131  model lớp 1, conf=0.658, IoU=0.333; cần người xem
+[WARN ] POSSIBLE_LOOSE_BOX   img_0142  model lớp 1, conf=0.658, IoU=0.428; cần người xem
+[WARN ] POSSIBLE_LOOSE_BOX   img_0171  model lớp 0, conf=0.729, IoU=0.427; cần người xem
+[WARN ] POSSIBLE_LOOSE_BOX   img_0171  model lớp 0, conf=0.639, IoU=0.330; cần người xem
+[WARN ] POSSIBLE_LOOSE_BOX   img_0175  model lớp 1, conf=0.900, IoU=0.422; cần người xem
+[WARN ] POSSIBLE_LOOSE_BOX   img_0179  model lớp 1, conf=0.753, IoU=0.366; cần người xem
+[WARN ] POSSIBLE_LOOSE_BOX   img_0200  model lớp 1, conf=0.691, IoU=0.434; cần người xem
+[WARN ] POSSIBLE_LOOSE_BOX   img_0217  model lớp 0, conf=0.945, IoU=0.342; cần người xem
+[WARN ] POSSIBLE_LOOSE_BOX   img_0217  model lớp 0, conf=0.668, IoU=0.358; cần người xem
+[WARN ] POSSIBLE_MISSING     img_0001  model lớp 1, conf=0.946, IoU=0.000; cần người xem
+[WARN ] POSSIBLE_MISSING     img_0004  model lớp 0, conf=0.890, IoU=0.000; cần người xem
+[WARN ] POSSIBLE_MISSING     img_0004  model lớp 0, conf=0.789, IoU=0.000; cần người xem
+[WARN ] POSSIBLE_MISSING     img_0012  model lớp 1, conf=0.671, IoU=0.000; cần người xem
+[WARN ] POSSIBLE_MISSING     img_0014  model lớp 1, conf=0.847, IoU=0.000; cần người xem
+[WARN ] POSSIBLE_MISSING     img_0020  model lớp 1, conf=0.841, IoU=0.000; cần người xem
+[WARN ] POSSIBLE_MISSING     img_0022  model lớp 0, conf=0.848, IoU=0.000; cần người xem
+[WARN ] POSSIBLE_MISSING     img_0028  model lớp 1, conf=0.941, IoU=0.000; cần người xem
+[WARN ] POSSIBLE_MISSING     img_0030  model lớp 1, conf=0.686, IoU=0.000; cần người xem
+[WARN ] POSSIBLE_MISSING     img_0032  model lớp 1, conf=0.608, IoU=0.000; cần người xem
+[WARN ] POSSIBLE_MISSING     img_0047  model lớp 1, conf=0.717, IoU=0.000; cần người xem
+[WARN ] POSSIBLE_MISSING     img_0050  model lớp 1, conf=0.929, IoU=0.000; cần người xem
+[WARN ] POSSIBLE_MISSING     img_0057  model lớp 1, conf=0.889, IoU=0.000; cần người xem
+[WARN ] POSSIBLE_MISSING     img_0058  model lớp 1, conf=0.729, IoU=0.000; cần người xem
+[WARN ] POSSIBLE_MISSING     img_0065  model lớp 3, conf=0.941, IoU=0.000; cần người xem
+[WARN ] POSSIBLE_MISSING     img_0066  model lớp 3, conf=0.946, IoU=0.000; cần người xem
+[WARN ] POSSIBLE_MISSING     img_0067  model lớp 1, conf=0.835, IoU=0.000; cần người xem
+[WARN ] POSSIBLE_MISSING     img_0068  model lớp 1, conf=0.885, IoU=0.000; cần người xem
+[WARN ] POSSIBLE_MISSING     img_0078  model lớp 0, conf=0.853, IoU=0.000; cần người xem
+[WARN ] POSSIBLE_MISSING     img_0086  model lớp 1, conf=0.884, IoU=0.000; cần người xem
+[WARN ] POSSIBLE_MISSING     img_0092  model lớp 0, conf=0.907, IoU=0.000; cần người xem
+[WARN ] POSSIBLE_MISSING     img_0093  model lớp 1, conf=0.706, IoU=0.000; cần người xem
+[WARN ] POSSIBLE_MISSING     img_0096  model lớp 1, conf=0.859, IoU=0.000; cần người xem
+[WARN ] POSSIBLE_MISSING     img_0099  model lớp 1, conf=0.877, IoU=0.000; cần người xem
+[WARN ] POSSIBLE_MISSING     img_0100  model lớp 1, conf=0.624, IoU=0.000; cần người xem
+[WARN ] POSSIBLE_MISSING     img_0103  model lớp 1, conf=0.925, IoU=0.000; cần người xem
+[WARN ] POSSIBLE_MISSING     img_0104  model lớp 1, conf=0.930, IoU=0.000; cần người xem
+[WARN ] POSSIBLE_MISSING     img_0116  model lớp 1, conf=0.795, IoU=0.000; cần người xem
+[WARN ] POSSIBLE_MISSING     img_0117  model lớp 1, conf=0.674, IoU=0.000; cần người xem
+[WARN ] POSSIBLE_MISSING     img_0121  model lớp 1, conf=0.764, IoU=0.000; cần người xem
+[WARN ] POSSIBLE_MISSING     img_0127  model lớp 1, conf=0.684, IoU=0.000; cần người xem
+[WARN ] POSSIBLE_MISSING     img_0131  model lớp 1, conf=0.892, IoU=0.000; cần người xem
+[WARN ] POSSIBLE_MISSING     img_0134  model lớp 1, conf=0.680, IoU=0.000; cần người xem
+[WARN ] POSSIBLE_MISSING     img_0144  model lớp 1, conf=0.964, IoU=0.000; cần người xem
+[WARN ] POSSIBLE_MISSING     img_0145  model lớp 1, conf=0.938, IoU=0.000; cần người xem
+[WARN ] POSSIBLE_MISSING     img_0147  model lớp 1, conf=0.784, IoU=0.000; cần người xem
+[WARN ] POSSIBLE_MISSING     img_0151  model lớp 3, conf=0.725, IoU=0.000; cần người xem
+[WARN ] POSSIBLE_MISSING     img_0157  model lớp 1, conf=0.896, IoU=0.000; cần người xem
+[WARN ] POSSIBLE_MISSING     img_0159  model lớp 1, conf=0.929, IoU=0.000; cần người xem
+[WARN ] POSSIBLE_MISSING     img_0160  model lớp 2, conf=0.777, IoU=0.000; cần người xem
+[WARN ] POSSIBLE_MISSING     img_0164  model lớp 1, conf=0.783, IoU=0.000; cần người xem
+[WARN ] POSSIBLE_MISSING     img_0165  model lớp 1, conf=0.822, IoU=0.000; cần người xem
+[WARN ] POSSIBLE_MISSING     img_0178  model lớp 1, conf=0.932, IoU=0.000; cần người xem
+[WARN ] POSSIBLE_MISSING     img_0184  model lớp 1, conf=0.791, IoU=0.000; cần người xem
+[WARN ] POSSIBLE_MISSING     img_0187  model lớp 1, conf=0.933, IoU=0.000; cần người xem
+[WARN ] POSSIBLE_MISSING     img_0194  model lớp 0, conf=0.602, IoU=0.000; cần người xem
+[WARN ] POSSIBLE_MISSING     img_0199  model lớp 1, conf=0.832, IoU=0.000; cần người xem
+[WARN ] POSSIBLE_MISSING     img_0204  model lớp 1, conf=0.915, IoU=0.000; cần người xem
+[WARN ] POSSIBLE_MISSING     img_0210  model lớp 0, conf=0.666, IoU=0.000; cần người xem
+[WARN ] POSSIBLE_MISSING     img_0211  model lớp 0, conf=0.746, IoU=0.000; cần người xem
+[WARN ] POSSIBLE_MISSING     img_0215  model lớp 1, conf=0.936, IoU=0.000; cần người xem
+[WARN ] POSSIBLE_MISSING     img_0218  model lớp 1, conf=0.837, IoU=0.000; cần người xem
+[WARN ] POSSIBLE_MISSING     img_0220  model lớp 1, conf=0.819, IoU=0.000; cần người xem
+[WARN ] POSSIBLE_WRONG_CLASS img_0019  model lớp 0, conf=0.941, IoU=0.988; cần người xem
+[WARN ] POSSIBLE_WRONG_CLASS img_0020  model lớp 3, conf=0.947, IoU=0.943; cần người xem
+[WARN ] POSSIBLE_WRONG_CLASS img_0021  model lớp 1, conf=0.934, IoU=0.972; cần người xem
+[WARN ] POSSIBLE_WRONG_CLASS img_0034  model lớp 1, conf=0.907, IoU=0.892; cần người xem
+[WARN ] POSSIBLE_WRONG_CLASS img_0037  model lớp 0, conf=0.913, IoU=0.969; cần người xem
+[WARN ] POSSIBLE_WRONG_CLASS img_0070  model lớp 1, conf=0.948, IoU=0.987; cần người xem
+[WARN ] POSSIBLE_WRONG_CLASS img_0071  model lớp 1, conf=0.925, IoU=0.988; cần người xem
+[WARN ] POSSIBLE_WRONG_CLASS img_0075  model lớp 1, conf=0.914, IoU=0.971; cần người xem
+[WARN ] POSSIBLE_WRONG_CLASS img_0083  model lớp 0, conf=0.695, IoU=0.948; cần người xem
+[WARN ] POSSIBLE_WRONG_CLASS img_0112  model lớp 1, conf=0.793, IoU=0.927; cần người xem
+[WARN ] POSSIBLE_WRONG_CLASS img_0124  model lớp 0, conf=0.928, IoU=0.967; cần người xem
+[WARN ] POSSIBLE_WRONG_CLASS img_0160  model lớp 2, conf=0.778, IoU=0.951; cần người xem
+[WARN ] POSSIBLE_WRONG_CLASS img_0183  model lớp 1, conf=0.908, IoU=0.935; cần người xem
+[WARN ] POSSIBLE_WRONG_CLASS img_0185  model lớp 1, conf=0.680, IoU=0.902; cần người xem
+[WARN ] POSSIBLE_WRONG_CLASS img_0191  model lớp 1, conf=0.908, IoU=0.948; cần người xem
+[WARN ] POSSIBLE_WRONG_CLASS img_0202  model lớp 1, conf=0.944, IoU=0.989; cần người xem
+[WARN ] POSSIBLE_WRONG_CLASS img_0208  model lớp 1, conf=0.922, IoU=0.939; cần người xem
+[WARN ] POSSIBLE_WRONG_CLASS img_0212  model lớp 1, conf=0.838, IoU=0.768; cần người xem
+
+## Tổng hợp theo mã
+error MISSING_LABEL_FILE     6
+warn  BOX_HUGE               3
+warn  BOX_TINY               7
+warn  EMPTY_LABEL            15
+warn  POSSIBLE_FALSE_POS     24
+warn  POSSIBLE_LOOSE_BOX     28
+warn  POSSIBLE_MISSING       53
+warn  POSSIBLE_WRONG_CLASS   18
