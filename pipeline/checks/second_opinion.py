@@ -40,5 +40,50 @@ from ..model_cache import get_preds  # noqa: F401
 
 
 def run(ds, cfg, preds=None):
-    # TODO
-    raise NotImplementedError("check second_opinion chưa làm")
+    if preds is None:
+        preds = get_preds(ds, cfg, "checker")
+    c, issues = cfg["second_opinion"], []
+    for path in ds.image_files():
+        stem = path.stem
+        if stem not in preds or not ds.label_path(stem).exists():
+            continue
+        size = ds.image_size(stem)
+        if not size:
+            continue
+        labels = []
+        for no, text in ds.read_label_lines(stem) or []:
+            try:
+                box = parse_yolo_line(text)
+            except (ValueError, OverflowError):
+                continue
+            if 0 <= box[0] < len(ds.classes):
+                labels.append((no, box))
+        for cls, conf, x, y, w, h in preds[stem]:
+            if conf < c["conf"] or w * size[0] * h * size[1] < c["min_area_px"]:
+                continue
+            candidates = [(b[0], iou_xywh((x, y, w, h), b[1:])) for _, b in labels]
+            candidates = [(k, overlap) for k, overlap in candidates if overlap >= c["iou_missing"]]
+            same = [overlap for k, overlap in candidates if k == cls]
+            code, overlap = None, 0.0
+            if not candidates:
+                code = "POSSIBLE_MISSING"
+            elif same:
+                overlap = max(same)
+                if overlap < c["iou_loose"]:
+                    code = "POSSIBLE_LOOSE_BOX"
+            else:
+                overlap = max(v for _, v in candidates)
+                if overlap >= c["iou_match"]:
+                    code = "POSSIBLE_WRONG_CLASS"
+            if code:
+                issues.append(Issue("second_opinion", WARN, code, stem,
+                                    f"model lớp {cls}, conf={conf:.3f}, IoU={overlap:.3f}; cần người xem",
+                                    extra={"conf": conf, "iou": overlap}))
+        fp_preds = [p for p in preds[stem] if p[1] >= c["fp_conf"]]
+        for no, box in labels:
+            overlap = max((iou_xywh(box[1:], p[2:]) for p in fp_preds), default=0.0)
+            if overlap < c["iou_missing"]:
+                issues.append(Issue("second_opinion", WARN, "POSSIBLE_FALSE_POS", stem,
+                                    "box nhãn không khớp dự đoán nào; cần người xem", no,
+                                    {"iou": overlap}))
+    return issues
